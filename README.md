@@ -7,74 +7,59 @@ To implement Opening and Closing using Python and OpenCV.
 2. OpenCV
 ## Algorithm:
 ### Step1:
-<br>
-
+Import the necessary packages
 
 ### Step2:
-<br>
+Give the input text using cv2.putText()
 
 ### Step3:
-<br>
+Perform opening operation and display the result
 
 ### Step4:
-<br>
-
-### Step5:
-<br>
+Similarly, perform closing operation and display the result
 
  
 ## Program:
 
 ``` Python
-# Import the necessary packages
+#NAME: Dharshan V
+#REG.NO: 212224240035
 
+# Import necessary packages
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+from google.colab.patches import cv2_imshow
 
+# i) Create the text using cv2.putText
+img1 = np.zeros((300, 600), dtype='uint8')
+font = cv2.FONT_ITALIC
+img2 = cv2.putText(img1, "Dharshan V", (5, 200), font, 2, (255), 6, cv2.LINE_AA)
 
-# Create the Text using cv2.putText
+cv2_imshow(img2)
 
+# ii) Create structuring elements
+kernel1 = cv2.getStructuringElement(cv2.MORPH_RECT, (11, 11))
+kernel2 = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
 
+# iii) Use Opening operation (Erosion followed by Dilation)
+img_open = cv2.morphologyEx(img2, cv2.MORPH_OPEN, kernel2)
+cv2_imshow(img_open)
 
-# Create the structuring element
-
-
-
-# Use Opening operation
-
-
-
-
-# Use Closing Operation
-
-
-
-
+# iv) Use Closing operation (Dilation followed by Erosion)
+img_close = cv2.morphologyEx(img2, cv2.MORPH_CLOSE, kernel1)
+cv2_imshow(img_close)
 
 ```
 ## Output:
 
 ### Display the input Image
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<img width="389" height="411" alt="download" src="https://github.com/user-attachments/assets/1bfccfc6-35d8-479b-90ef-32af3937f8cc" />
 
 ### Display the result of Opening
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<img width="389" height="411" alt="download" src="https://github.com/user-attachments/assets/374d4577-6971-4ea0-8507-2b1f1a2459ab" />
 
-### Display the result of Closing
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 ## Result
 Thus the Opening and Closing operation is used in the image using python and OpenCV.
